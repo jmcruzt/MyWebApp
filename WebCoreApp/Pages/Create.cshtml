@@ -1,0 +1,14 @@
+﻿@page
+@model WebCoreApp.Pages.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<p>Enter your name</p>
+<form method="post">
+    <div>Name: <input asp-for="Customer.Name" /></div>
+    <input type="submit" value="Submit" />
+    
+</form>
