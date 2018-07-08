@@ -1,0 +1,26 @@
+﻿@page
+@using Microsoft.Extensions.Configuration 
+@inject IConfiguration Configuration
+@model MyWebApp.Pages.IndexModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <b>Hello Everybody!</b>
+    @{ 
+        var i = 2 + 2;
+    }
+    <b>Time of the day: @i  PM</b>
+    <br /><br />
+    Message From Config File
+    @Configuration["Message"]
+</body>
+</html>
