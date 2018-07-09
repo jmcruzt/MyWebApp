@@ -1,0 +1,20 @@
+﻿@page "{id:int}"
+@model WebCoreApp.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Customer - @Model.Customer.Id  </h2>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <input asp-for="Customer.Id" type="hidden" />
+    <div>
+        <label asp-for="Customer.Name" />
+    <br />
+        Edit Name: <input asp-for="Customer.Name" />
+    </div>
+    <br />
+    <input type="submit" value="Save Changes" />
+    <a asp-page="./Index">Go Back</a>
+</form>
