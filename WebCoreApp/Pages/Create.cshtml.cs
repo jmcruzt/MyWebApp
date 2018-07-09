@@ -9,18 +9,26 @@ namespace WebCoreApp.Pages
 {
     public class CreateModel : PageModel
     {
+        [BindProperty]
         public Customer Customer { get; set; }
+        private readonly AppDbContext _db;
 
         public CreateModel(AppDbContext db)
         {
             _db = db;
         }
 
-        private readonly AppDbContext _db;
 
-        public void OnGet()
+        public async Task<IActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
+            _db.Customers.Add(Customer);
+            await _db.SaveChangesAsync();
+            return RedirectToPage("/Index");
         }
     }
 }
