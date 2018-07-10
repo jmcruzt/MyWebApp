@@ -14,6 +14,8 @@ namespace WebCoreApp.Pages
         private readonly AppDbContext _db;
         [BindProperty]
         public Customer Customer { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         public EditModel(AppDbContext db)
         {
@@ -48,7 +50,8 @@ namespace WebCoreApp.Pages
 
                 throw;
             }
-      
+
+            Message = $"Customer {Customer.Name} updated!";
             return RedirectToPage("/Index");
         }
     }

@@ -12,6 +12,9 @@ namespace WebCoreApp.Pages
         [BindProperty]
         public Customer Customer { get; set; }
         private readonly AppDbContext _db;
+        
+        [TempData]
+        public string Message { get; set; }
 
         public CreateModel(AppDbContext db)
         {
@@ -28,6 +31,7 @@ namespace WebCoreApp.Pages
 
             _db.Customers.Add(Customer);
             await _db.SaveChangesAsync();
+            Message = $"Customer {Customer.Name} Added!";
             return RedirectToPage("/Index");
         }
     }

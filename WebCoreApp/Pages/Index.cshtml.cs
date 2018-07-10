@@ -12,7 +12,8 @@ namespace WebCoreApp.Pages
     {
 
         private readonly AppDbContext _db;
-
+        [TempData]
+        public string Message { get; set; }
         public IndexModel(AppDbContext db)
         {
             _db = db;
@@ -34,7 +35,7 @@ namespace WebCoreApp.Pages
                 await _db.SaveChangesAsync();
             }
 
-
+            Message = $"Customer {customer.Name} deleted!";
             return RedirectToPage();
         }
     }
